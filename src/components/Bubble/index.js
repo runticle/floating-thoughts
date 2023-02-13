@@ -18,6 +18,18 @@ const BubbleStyle = styled.div`
     align-items: center;
     text-align: center;
     background: radial-gradient(circle at bottom, #81e8f6, #76deef 10%, #055194 80%, #062745 100%);
+    cursor: pointer;
+
+    &.popped {
+        animation: 1s linear normal shrink;
+    }
+
+    @keyframes shrink {
+        0% {transform: scale(1);}
+        60% {transform: scale(0.3);}
+        95% {transform: scale(0.000001);}
+        100% {transform: scale(0.01);}
+    }
 
     &:before {
         content: "";
@@ -34,11 +46,14 @@ const BubbleStyle = styled.div`
     }
 `
 
-export default function Bubble({ idea, onClickHandler }) {
+export default function Bubble({ text, id, onClickHandler }) {
     const [position, newPosition] = useState({ left: 0, bottom: 0 })
     const { height: windowHeight, width: windowWidth } = useWindowDimensions();
+    const [popped, pop] = useState(false)
 
     const { left, bottom } = position;
+
+    console.log('id', id, text)
 
     const handlePosition = useCallback(() => {
         // simple function for now. Obviously rubbish and bubbles tend towards the center
@@ -53,13 +68,19 @@ export default function Bubble({ idea, onClickHandler }) {
     }, [windowHeight, windowWidth])
 
     useEffect(() => {
-        setTimeout(handlePosition, 5000)
+        const interval = setInterval(() => handlePosition(), 4000)
+
+        return () => clearInterval(interval)
     })
 
+    const handleClick = useCallback(() => {
+        pop(true)
+        setTimeout(() => onClickHandler(id), 900)
+    }, [pop])
 
     return (
-        <BubbleStyle className="bubble" style={{ left: left + 'px', bottom: bottom + 'px' }}>
-            {idea}
+        <BubbleStyle className={popped ? 'popped' : ''} onClick={handleClick} style={{ left: left + 'px', bottom: bottom + 'px' }}>
+            {text}
         </BubbleStyle>
     )
 
