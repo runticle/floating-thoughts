@@ -1,7 +1,8 @@
-import { useState } from "react"
+import { useState, useRef } from "react"
 import styled from "styled-components"
 
 const NewBubbleStyle = styled.div`
+    --font-color: #87CDF6;
   position: absolute;
   bottom: 0;
   height: 15vh;
@@ -14,7 +15,10 @@ const NewBubbleStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
+
+  text-align: center;
+  color: var(--font-color);
 
   > * {
     font-family: calm;
@@ -24,38 +28,90 @@ const NewBubbleStyle = styled.div`
 
   line-height: 1rem;
 
-  input {
-    width: 100vw;
-    max-width: 350px;
-    background: white;
-    padding-left: 10px;
-    border-radius: 5px;
-    border: 1px solid #87CDF6;
-    height: 30px;
-    color: #87CDF6;
-
-    &::placeholder {
-        color: #87CDF6;
-    }
-
-    &:active, &:focus {
-
+  p {
+    color: transparent;
+    transition: all 1s ease;
+    
+    &.show {
+       color: #CFFFF6;
     }
   }
-    button {
-        width: 100vw;
-        max-width: 150px;
 
-        background: #87CDF6;
-        border-radius: 5px;
-        border: 1px solid #87CDF6;
-        height: 30px;
+    .input-hover{
+        opacity: 0.7;
+        width: 70px;
+        height: 50px;
+        background: white;
+        border-radius:  5px;
+        padding: 0 20px;
+        margin: 0;
+        border: none;
+        box-shadow: rgba(145,106,112,0.2) 0 6px 24px;
+        position: relative;
+        color: var(--font-color);
 
-        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        span {
+            color: var(--font-color);
+            width: 70px;
+            overflow: hidden;
+            text-align: center;
+            white-space: nowrap;
+            
+            transition-property: width, color;
+            transition-duration : 1s, 2s;
+            transition-timing-function: ease-in, ease-out;
+            transition-delay: 1s, 2s;
+        }
+
+        > input{ 
+            border: none;
+            padding: 0;
+            margin: 0;
+            width: 0;
+            text-align: center;
+            outline: none !important;
+            
+            background: transparent;
+            transition: width 1.2s ease-out 0.4s;
+            height: 50px;
+
+            &::placeholder {
+                color: var(--font-color);
+            }
+        }
+
+        transition-property: background, width, color, border-radius;
+        transition-duration : 3s, 2s, 2s, 0.5s;
+        transition-timing-function: ease-in, ease-in, ease, ease;
+        transition-delay: 0.5s, 0s, 0.5s, 0.5s;
+
+        &:hover, &:focus, &:active, &:focus-within {
+            width: 350px;
+            border-radius: 5px;
+            background: white;
+            padding-left: 10px;
+
+            >input {
+                width: 200px;
+
+                &::placeholder {
+                    color: var(--font-color);
+                }
+            }
+
+            span {
+                color: transparent;
+                width: 0;
+                transition: 4s, 0.5s;
+            }
+
+        }
+
     }
-
-  border-top: 1px solid #8CE68C;
-  background: radial-gradient(ellipse at 50% 0%, #8CE68C, #ABF1BC 20%, #CFFFF6 60%, #AEE7F8 70%, #87CDF6 100%);
 
 `
 
@@ -67,16 +123,31 @@ export default function NewBubble({ onSubmit }) {
     }
 
     const handleSubmit = (e) => {
+        e.preventDefault()
+        inputRef.current.blur() // clears focus and resets the new bubbler
         setThought('')
         onSubmit(thought)
     }
 
+
+    const inputRef = useRef()
+
     return (
         <NewBubbleStyle>
-            <input value={thought} onChange={handleChange} placeholder="What are you thinking?" />
-            <button type="submit" onClick={handleSubmit}>
-                Release
-            </button>
+            <form onSubmit={handleSubmit}>
+
+                <div className="input-hover">
+                    <span>New Bubble</span>
+                    <input ref={inputRef} value={thought} onChange={handleChange} placeholder="What are you thinking?" />
+                </div>
+
+                <p className={thought.length ? 'show' : ''}>
+                    Press Enter
+                </p>
+
+            </form>
+
+
         </NewBubbleStyle>
     )
 
