@@ -1,5 +1,7 @@
 import Bubble from '@/components/Bubble'
+import NewBubble from '@/components/NewBubble'
 import Head from 'next/head'
+import { useState } from 'react'
 import styled from 'styled-components'
 
 const MainStyles = styled.div`
@@ -18,7 +20,36 @@ const MainStyles = styled.div`
   height: 100vh;
 `
 
+const defaultIdeas = [
+  {
+    id: 1,
+    text: "Example! Pop me!"
+  }
+  // "Clean the dishes",
+  // "Solve world peace",
+  // "do some coding for my dads birthday game",
+  // "sort out mothers day",
+  // "what happens if I write a really long thing cos my thoughts are so complex and I just don't know how to condense them?",
+]
+
+function getNextID(array) {
+  return !array.length ? 1 : array.sort((a, b) => b.id - a.id)[0]['id'] + 1
+}
+
 export default function Home() {
+  const [ideas, manageIdeas] = useState(defaultIdeas)
+
+  const handleNewIdea = (idea) => {
+    manageIdeas(ideas => [...ideas, {
+      text: idea,
+      id: getNextID(ideas)
+    }])
+  }
+
+  const handlePop = (id) => {
+    manageIdeas(ideas => ideas.filter(idea => idea.id !== id))
+  }
+
   return (
     <>
       <Head>
@@ -28,12 +59,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <MainStyles>
-        <Bubble idea={"Hello World"} />
-        <Bubble idea={"Clean the dishes"} />
-        <Bubble idea={"Solve world peace"} />
-        <Bubble idea={"do some coding for my dads birthday game"} />
-        <Bubble idea={"sort out mothers day"} />
-        <Bubble idea={"what happens if I write a really long thing cos my thoughts are so complex and I just don't know how to condense them?"} />
+        {
+          ideas.map(({ text, id }) => <Bubble text={text} key={id} id={id} onClickHandler={handlePop} />)
+        }
+        <NewBubble onSubmit={handleNewIdea} />
       </MainStyles>
     </>
   )
