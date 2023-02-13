@@ -1,4 +1,4 @@
-# floating-thoughts
+# Floating Thoughts
 Simple UI for visualising thoughts
 
 # Plan
