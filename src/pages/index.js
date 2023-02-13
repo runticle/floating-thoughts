@@ -12,12 +12,17 @@ const MainStyles = styled.div`
       font-style: normal;
   }
 
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 10vh;
+
   font-family: 'calm', --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 1.3rem;
 
-  background: linear-gradient(to top, #8CE68C, #ABF1BC 10%, #CFFFF6 40%, #AEE7F8 80%, #87CDF6 100%);
-  width: 100vw;
-  height: 100vh;
+  background: black;
+  background: radial-gradient(ellipse at 50% 100%, #8CE68C, #ABF1BC 20%, #CFFFF6 60%, #AEE7F8 70%, #87CDF6 100%);
 `
 
 const defaultIdeas = [
@@ -62,8 +67,8 @@ export default function Home() {
         {
           ideas.map(({ text, id }) => <Bubble text={text} key={id} id={id} onClickHandler={handlePop} />)
         }
-        <NewBubble onSubmit={handleNewIdea} />
       </MainStyles>
+      <NewBubble onSubmit={handleNewIdea} />
     </>
   )
 }
