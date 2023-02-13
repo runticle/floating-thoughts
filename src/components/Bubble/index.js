@@ -7,7 +7,7 @@ const BubbleStyle = styled.div`
     padding: 20px;
     opacity: 0.7;
     position: absolute;
-    transition: linear 10s;
+    transition: linear 15s;
     border-radius: 50%;
     color: white;
     min-height: 100px;
@@ -19,6 +19,12 @@ const BubbleStyle = styled.div`
     text-align: center;
     background: radial-gradient(circle at bottom, #81e8f6, #76deef 10%, #055194 80%, #062745 100%);
     cursor: pointer;
+    animation: 3.8s linear normal grow;
+
+    @keyframes grow {
+        0% {transform: scale(0.00001);}
+        100% {transform: scale(1);}
+    }
 
     &.popped {
         animation: 1s linear normal shrink;
@@ -43,17 +49,16 @@ const BubbleStyle = styled.div`
         background: radial-gradient(circle at top, white, rgba(255, 255, 255, 0.1) 58%);
         filter: blur(5px);
         z-index: 2; 
+        transform: rotate(45deg)
     }
 `
 
 export default function Bubble({ text, id, onClickHandler }) {
-    const [position, newPosition] = useState({ left: 0, bottom: 0 })
     const { height: windowHeight, width: windowWidth } = useWindowDimensions();
+    const [position, newPosition] = useState({ left: getRandomNumberUpTo(windowWidth), bottom: getRandomNumberUpTo(windowHeight) })
     const [popped, pop] = useState(false)
 
     const { left, bottom } = position;
-
-    console.log('id', id, text)
 
     const handlePosition = useCallback(() => {
         // simple function for now. Obviously rubbish and bubbles tend towards the center
