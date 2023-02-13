@@ -19,7 +19,7 @@ const BubbleStyle = styled.div`
     text-align: center;
     background: radial-gradient(circle at bottom, #81e8f6, #76deef 10%, #055194 80%, #062745 100%);
     cursor: pointer;
-    animation: 3.8s linear normal grow;
+    animation: 4.3s linear normal grow;
 
     @keyframes grow {
         0% {transform: scale(0.00001);}
@@ -49,7 +49,7 @@ const BubbleStyle = styled.div`
         background: radial-gradient(circle at top, white, rgba(255, 255, 255, 0.1) 58%);
         filter: blur(5px);
         z-index: 2; 
-        transform: rotate(45deg)
+        /* transform: rotate(45deg) */
     }
 `
 
@@ -92,4 +92,5 @@ export default function Bubble({ text, id, onClickHandler }) {
 }
 
 const getRandomNumberUpTo = (n) => Math.floor(Math.random() * n)
+
 

@@ -16,13 +16,13 @@ const MainStyles = styled.div`
   left: 0;
   top: 0;
   right: 0;
-  bottom: 10vh;
+  bottom: 0;
 
   font-family: 'calm', --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 1.3rem;
 
   background: black;
-  background: radial-gradient(ellipse at 50% 100%, #8CE68C, #ABF1BC 20%, #CFFFF6 60%, #AEE7F8 70%, #87CDF6 100%);
+  /* background: radial-gradient(ellipse at 50% 100%, #8CE68C, #ABF1BC 20%, #CFFFF6 60%, #AEE7F8 70%, #87CDF6 100%); */
 `
 
 const defaultIdeas = [
