@@ -3,7 +3,17 @@ import Head from 'next/head'
 import styled from 'styled-components'
 
 const MainStyles = styled.div`
-  background-color: skyblue;
+  @font-face {
+      font-family: 'calm';
+      src: url('/quesha.ttf') format("truetype");
+      font-weight: normal;
+      font-style: normal;
+  }
+
+  font-family: 'calm', --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 1.3rem;
+
+  background: linear-gradient(to top, #8CE68C, #ABF1BC 10%, #CFFFF6 40%, #AEE7F8 80%, #87CDF6 100%);
   width: 100vw;
   height: 100vh;
 `
@@ -23,6 +33,7 @@ export default function Home() {
         <Bubble idea={"Solve world peace"} />
         <Bubble idea={"do some coding for my dads birthday game"} />
         <Bubble idea={"sort out mothers day"} />
+        <Bubble idea={"what happens if I write a really long thing cos my thoughts are so complex and I just don't know how to condense them?"} />
       </MainStyles>
     </>
   )
