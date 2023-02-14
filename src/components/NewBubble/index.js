@@ -3,40 +3,21 @@ import styled from "styled-components"
 
 const NewBubbleStyle = styled.div`
     --font-color: #87CDF6;
-  /* position: absolute; */
-  /* bottom: 0;
-  height: 15vh;
-  left: 0;
-  right: 0; */
-/* 
-  padding: 20px;
-  box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 20px;
+    box-sizing: border-box;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+    color: var(--font-color);
 
-  text-align: center; */
-
-  color: var(--font-color);
-
-  > * {
-    font-family: calm;
-    font-size: 20px;
-  }
-  
-
-  line-height: 1rem;
-
-  p {
-    color: transparent;
-    transition: all 1s ease;
-    
-    &.show {
-       color: #CFFFF6;
+    > * {
+        font-family: calm;
+        font-size: 20px;
     }
-  }
+    
+
+    line-height: 1rem;
 
     .input-hover{
         opacity: 0.7;
@@ -66,6 +47,7 @@ const NewBubbleStyle = styled.div`
             width: 50px;
             padding-bottom: 7px;
             padding-left: 14px;
+            z-index: 2;
 
             
             transition-property: width, padding, color, transform;
@@ -89,6 +71,20 @@ const NewBubbleStyle = styled.div`
 
             &::placeholder {
                 color: var(--font-color);
+            }
+        }
+
+        p {
+            display: none;
+            color: transparent;
+            padding: 0;
+            width: 0;
+            transition: all 1s ease;
+            
+            &.show {
+                color: var(--font-color);
+                width: unset;
+                margin-left: 100px;
             }
         }
 
@@ -123,6 +119,10 @@ const NewBubbleStyle = styled.div`
                 transition-delay: 0s , 0s , 0s;
             }
 
+            p {
+                display: unset;
+            }
+
         }
 
     }
@@ -153,11 +153,12 @@ export default function NewBubble({ onSubmit }) {
                 <div className="input-hover">
                     <span>+</span>
                     <input ref={inputRef} value={thought} onChange={handleChange} placeholder="What are you thinking?" />
+                    <p className={thought.length ? 'show' : ''}>
+                        Enter
+                    </p>
                 </div>
 
-                <p className={thought.length ? 'show' : ''}>
-                    Press Enter
-                </p>
+
 
             </form>
 

@@ -21,8 +21,7 @@ const MainStyles = styled.div`
   font-family: 'calm', --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 1.3rem;
 
-  background: black;
-  /* background: radial-gradient(ellipse at 50% 100%, #8CE68C, #ABF1BC 20%, #CFFFF6 60%, #AEE7F8 70%, #87CDF6 100%); */
+  background: #e3f4fe;
 `
 
 const defaultIdeas = [
