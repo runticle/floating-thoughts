@@ -68,10 +68,10 @@ const NewBubbleStyle = styled.div`
             padding-left: 14px;
 
             
-            transition-property: width, padding, color;
-            transition-duration : 0.5s, 0.5s, 2s;
-            transition-timing-function: ease, ease, ease;
-            transition-delay: 2s, 2s, 1s
+            transition-property: width, padding, color, transform;
+            transition-duration : 0.25s, 0.25s, 1s, 0.5s;
+            transition-timing-function: ease, ease, ease, ease;
+            transition-delay: 1s, 1s, 0.5s, 0s;
         }
 
         > input{ 
@@ -84,7 +84,7 @@ const NewBubbleStyle = styled.div`
             padding-left: 10px;
 
             background: transparent;
-            transition: width 1.5s ease-out 0.4s;
+            transition: width 0.75s ease-out 0.2s;
             height: 50px;
 
             &::placeholder {
@@ -93,16 +93,16 @@ const NewBubbleStyle = styled.div`
         }
 
         transition-property: width, color, border-radius;
-        transition-duration : 1s, 2s, 0.5s;
+        transition-duration : 0.4s, 1s, 0.25s;
         transition-timing-function: ease-in, ease, ease;
-        transition-delay: 0.5s, 0.5s, 1.5s;
+        transition-delay: 0.4s, 0.25s, 0.75s;
 
         &:hover, &:focus, &:active, &:focus-within {
             width: 350px;
             border-radius: 5px;
             background: white;
 
-            transition-delay: 0.5s, 0.5s, 0s;
+            transition-delay: 0.25s, 0.25s, 0s;
             
             >input {
                 width: 200px;
@@ -116,7 +116,10 @@ const NewBubbleStyle = styled.div`
                 color: transparent;
                 width: 0;
                 padding: 0;
-                transition-duration: 0.7s, 0.7s, 0.3s;
+
+                transform: rotate(45deg) scale(3);
+
+                transition-duration: 0.35s, 0.35s, 0.15s;
                 transition-delay: 0s , 0s , 0s;
             }
 
