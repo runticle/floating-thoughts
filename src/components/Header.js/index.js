@@ -29,10 +29,10 @@ export default function Header() {
                 Floating Thoughts
             </h1>
             <div className="socials">
-                <a href="https://www.linkedin.com/in/alfiefreeman/" target="_blank" rel="noopener">
+                <a href="https://www.linkedin.com/in/alfiefreeman/" target="_blank" rel="noreferrer">
                     <img alt="LinkedIn" src="/assets/In-2c-54px-TM.png" style={{ width: '34px', marginRight: '5px' }} />
                 </a>
-                <a href="https://www.github.com/runticle" target="_blank" rel="noopener">
+                <a href="https://www.github.com/runticle" target="_blank" rel="noreferrer">
                     <img alt="Github" src="/assets/GitHub-Mark-64px.png" style={{ width: '30px' }} />
                 </a>
             </div>
