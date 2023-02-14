@@ -3,12 +3,12 @@ import styled from "styled-components"
 
 const NewBubbleStyle = styled.div`
     --font-color: #87CDF6;
-  position: absolute;
-  bottom: 0;
+  /* position: absolute; */
+  /* bottom: 0;
   height: 15vh;
   left: 0;
-  right: 0;
-
+  right: 0; */
+/* 
   padding: 20px;
   box-sizing: border-box;
 
@@ -17,7 +17,8 @@ const NewBubbleStyle = styled.div`
   align-items: center;
   justify-content: center;
 
-  text-align: center;
+  text-align: center; */
+
   color: var(--font-color);
 
   > * {
@@ -39,11 +40,11 @@ const NewBubbleStyle = styled.div`
 
     .input-hover{
         opacity: 0.7;
-        width: 70px;
+        width: 50px;
         height: 50px;
         background: white;
-        border-radius:  5px;
-        padding: 0 20px;
+        border-radius: 50%;
+        padding: 0;
         margin: 0;
         border: none;
         box-shadow: rgba(145,106,112,0.2) 0 6px 24px;
@@ -52,19 +53,25 @@ const NewBubbleStyle = styled.div`
 
         display: flex;
         align-items: center;
-        justify-content: center;
+        /* justify-content: center; */
 
         span {
             color: var(--font-color);
-            width: 70px;
             overflow: hidden;
             text-align: center;
             white-space: nowrap;
+            font-size: 50px;
             
-            transition-property: width, color;
-            transition-duration : 1s, 2s;
-            transition-timing-function: ease-in, ease-out;
-            transition-delay: 1s, 2s;
+            border-radius: 50%;
+            width: 50px;
+            padding-bottom: 7px;
+            padding-left: 14px;
+
+            
+            transition-property: width, padding, color;
+            transition-duration : 0.5s, 0.5s, 2s;
+            transition-timing-function: ease, ease, ease;
+            transition-delay: 2s, 2s, 1s
         }
 
         > input{ 
@@ -72,11 +79,12 @@ const NewBubbleStyle = styled.div`
             padding: 0;
             margin: 0;
             width: 0;
-            text-align: center;
+            text-align: left;
             outline: none !important;
-            
+            padding-left: 10px;
+
             background: transparent;
-            transition: width 1.2s ease-out 0.4s;
+            transition: width 1.5s ease-out 0.4s;
             height: 50px;
 
             &::placeholder {
@@ -84,17 +92,18 @@ const NewBubbleStyle = styled.div`
             }
         }
 
-        transition-property: background, width, color, border-radius;
-        transition-duration : 3s, 2s, 2s, 0.5s;
-        transition-timing-function: ease-in, ease-in, ease, ease;
-        transition-delay: 0.5s, 0s, 0.5s, 0.5s;
+        transition-property: width, color, border-radius;
+        transition-duration : 1s, 2s, 0.5s;
+        transition-timing-function: ease-in, ease, ease;
+        transition-delay: 0.5s, 0.5s, 1.5s;
 
         &:hover, &:focus, &:active, &:focus-within {
             width: 350px;
             border-radius: 5px;
             background: white;
-            padding-left: 10px;
 
+            transition-delay: 0.5s, 0.5s, 0s;
+            
             >input {
                 width: 200px;
 
@@ -106,7 +115,9 @@ const NewBubbleStyle = styled.div`
             span {
                 color: transparent;
                 width: 0;
-                transition: 4s, 0.5s;
+                padding: 0;
+                transition-duration: 0.7s, 0.7s, 0.3s;
+                transition-delay: 0s , 0s , 0s;
             }
 
         }
@@ -137,7 +148,7 @@ export default function NewBubble({ onSubmit }) {
             <form onSubmit={handleSubmit}>
 
                 <div className="input-hover">
-                    <span>New Bubble</span>
+                    <span>+</span>
                     <input ref={inputRef} value={thought} onChange={handleChange} placeholder="What are you thinking?" />
                 </div>
 
