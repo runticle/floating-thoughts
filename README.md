@@ -5,6 +5,8 @@ Add your thoughts and watch them float around the screen. Pop them when you like
 I am using this as a Todo list.
 I need to improve my design skills. 
 
+Use it [here](todo.alfiefreeman.co.uk)
+
 ![Floating Thoughts](/public/assets/FloatingThoughts.png)
 
 # Plan
