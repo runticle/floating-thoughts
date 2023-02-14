@@ -1,4 +1,5 @@
 import Bubble from '@/components/Bubble'
+import Header from '@/components/Header.js'
 import NewBubble from '@/components/NewBubble'
 import Head from 'next/head'
 import { useState } from 'react'
@@ -63,6 +64,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <MainStyles>
+        <Header />
         {
           ideas.map(({ text, id }) => <Bubble text={text} key={id} id={id} onClickHandler={handlePop} />)
         }
