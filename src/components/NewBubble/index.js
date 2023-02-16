@@ -64,6 +64,7 @@ const NewBubbleStyle = styled.div`
             text-align: left;
             outline: none !important;
             padding-left: 10px;
+            color: var(--font-color);
 
             background: transparent;
             transition: width 0.75s ease-out 0.2s;
@@ -153,7 +154,7 @@ export default function NewBubble({ onSubmit }) {
                 <div className="input-hover">
                     <span>+</span>
                     <input ref={inputRef} value={thought} onChange={handleChange} placeholder="What are you thinking?" />
-                    <p className={thought.length ? 'show' : ''}>
+                    <p onClick={handleSubmit} className={thought.length ? 'show' : ''}>
                         Enter
                     </p>
                 </div>
