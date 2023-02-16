@@ -5,10 +5,15 @@ const HeaderStyles = styled.div`
     grid-template-columns: 1fr 1fr 1fr;
     height: 100px;
     padding: 0 20px;
-
+    
     color: #87CDF6;
 
+    @media screen and (max-width: 768px){
+        font-size: 80%;
+    }
+    
     >div, >h1 {
+        text-align: center;
         justify-self: center;
     }
 
