@@ -18,8 +18,12 @@ const BubbleStyle = styled.div`
     align-items: center;
     text-align: center;
     background: radial-gradient(circle at bottom, #81e8f6, #76deef 10%, #055194 80%, #062745 100%);
-    cursor: pointer;
+    cursor: crosshair;
     animation: 4.3s linear normal grow;
+
+    .span {
+        pointer-events: none;
+    }
 
     @keyframes grow {
         0% {transform: scale(0.00001);}
@@ -31,10 +35,9 @@ const BubbleStyle = styled.div`
     }
 
     @keyframes shrink {
-        0% {transform: scale(1);}
-        60% {transform: scale(0.3);}
-        95% {transform: scale(0.000001);}
-        100% {transform: scale(0.01);}
+        0% {transform: translate3d(0,0,0)}
+        60% {transform: perspective(550px) translate3d(2000px, 1500px, -12000px);}
+        100% {transform: perspective(550px) translate3d(4500px, 2000px, -50000px);}
     }
 
     &:before {
@@ -49,7 +52,6 @@ const BubbleStyle = styled.div`
         background: radial-gradient(circle at top, white, rgba(255, 255, 255, 0.1) 58%);
         filter: blur(5px);
         z-index: 2; 
-        /* transform: rotate(45deg) */
     }
 `
 
@@ -85,7 +87,9 @@ export default function Bubble({ text, id, onClickHandler }) {
 
     return (
         <BubbleStyle className={popped ? 'popped' : ''} onClick={handleClick} style={{ left: left + 'px', bottom: bottom + 'px' }}>
-            {text}
+            <span>
+                {text}
+            </span>
         </BubbleStyle>
     )
 
