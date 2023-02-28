@@ -20,8 +20,8 @@ MVP ✅
 
 Phase 2
 -----
-- "pop" mode, cursor becomes a pin
-- popping noise
+- "pop" mode, cursor becomes a pin 
+- popping noise ✅
 - draggable bubbles
     - This is difficult at the moment because of how the floating works. Updating position in realtime wont work unless we change the css. Needs some thought 🤔
 - save in local storage ✅
