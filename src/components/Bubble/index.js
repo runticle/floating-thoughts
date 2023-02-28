@@ -18,7 +18,7 @@ const BubbleStyle = styled.div`
     align-items: center;
     text-align: center;
     background: radial-gradient(circle at bottom, #81e8f6, #76deef 10%, #055194 80%, #062745 100%);
-    cursor: crosshair;
+    cursor: url("/pin.png"), crosshair;
     animation: 4.3s linear normal grow;
 
     .span {
