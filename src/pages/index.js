@@ -1,8 +1,9 @@
 import Bubble from '@/components/Bubble'
 import Header from '@/components/Header.js'
 import NewBubble from '@/components/NewBubble'
+import useLocalStorage from '@/utils/useLocalStorage'
 import Head from 'next/head'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 const MainStyles = styled.div`
@@ -42,17 +43,17 @@ function getNextID(array) {
 }
 
 export default function Home() {
-  const [ideas, manageIdeas] = useState(defaultIdeas)
+  const [ideas, setIdeas] = useLocalStorage('ideas', defaultIdeas)
 
   const handleNewIdea = (idea) => {
-    manageIdeas(ideas => [...ideas, {
+    setIdeas(ideas => [...ideas, {
       text: idea,
       id: getNextID(ideas)
     }])
   }
 
   const handlePop = (id) => {
-    manageIdeas(ideas => ideas.filter(idea => idea.id !== id))
+    setIdeas(ideas => ideas.filter(idea => idea.id !== id))
   }
 
   return (
