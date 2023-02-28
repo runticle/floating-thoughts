@@ -1,5 +1,5 @@
 import useWindowDimensions from "@/utils/useWindowDimensions";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useMemo } from "react";
 
 import styled from "styled-components"
 
@@ -60,6 +60,9 @@ export default function Bubble({ text, id, onClickHandler }) {
     const [position, newPosition] = useState({ left: getRandomNumberUpTo(windowWidth), bottom: getRandomNumberUpTo(windowHeight) })
     const [popped, pop] = useState(false)
 
+    const popAudio = useMemo(() => new Audio('/pop.mp3'), []);
+    popAudio.playbackRate = 2.2
+
     const { left, bottom } = position;
 
     const handlePosition = useCallback(() => {
@@ -81,9 +84,10 @@ export default function Bubble({ text, id, onClickHandler }) {
     })
 
     const handleClick = useCallback(() => {
+        popAudio.play()
         pop(true)
         setTimeout(() => onClickHandler(id), 900)
-    }, [pop, id, onClickHandler])
+    }, [pop, id, onClickHandler, popAudio])
 
     return (
         <BubbleStyle className={popped ? 'popped' : ''} onClick={handleClick} style={{ left: left + 'px', bottom: bottom + 'px' }}>
