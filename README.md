@@ -23,4 +23,4 @@ Phase 2
 - "pop" mode, cursor becomes a pin
 - popping noise
 - draggable bubbles
-- save in web storage
+- save in local storage ✅
