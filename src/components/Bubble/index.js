@@ -83,7 +83,7 @@ export default function Bubble({ text, id, onClickHandler }) {
     const handleClick = useCallback(() => {
         pop(true)
         setTimeout(() => onClickHandler(id), 900)
-    }, [pop])
+    }, [pop, id, onClickHandler])
 
     return (
         <BubbleStyle className={popped ? 'popped' : ''} onClick={handleClick} style={{ left: left + 'px', bottom: bottom + 'px' }}>
